@@ -1,0 +1,48 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "bot_demo Service"
+  },
+  "basePath" : "/",
+  "paths" : {
+    "/service/hello" : {
+      "get" : {
+        "summary" : "Respond Hello <name>!",
+        "description" : "Returns a JSON object with a string to say hello. Uses 'world' if a name is not specified",
+        "operationId" : "getQuickHello",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/HelloWorld"
+            }
+          },
+          "404" : {
+            "description" : "Service not available"
+          },
+          "500" : {
+            "description" : "Unexpected Runtime error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "HelloWorld" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
